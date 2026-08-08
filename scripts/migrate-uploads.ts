@@ -5,8 +5,10 @@ import { ensureStorageBucket, saveImage } from "../server/lib/storage";
 
 const prisma = new PrismaClient();
 
-const uploadsDir =
-  process.env.UPLOADS_DIR || path.join(process.cwd(), "uploads");
+interface DirMapping {
+  localDir: string;
+  urlPrefix: string;
+}
 
 async function main() {
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
@@ -17,23 +19,33 @@ async function main() {
   await ensureStorageBucket();
   console.log("Storage bucket ready.");
 
+  const dirs: DirMapping[] = [
+    {
+      localDir: process.env.UPLOADS_DIR || path.join(process.cwd(), "uploads"),
+      urlPrefix: "/uploads/",
+    },
+    {
+      localDir: path.join(process.cwd(), "public", "images", "products"),
+      urlPrefix: "/images/products/",
+    },
+  ];
+
   const mapping = new Map<string, string>();
-  const files = fs.readdirSync(uploadsDir);
   let uploaded = 0;
 
-  for (const file of files) {
-    const localPath = path.join(uploadsDir, file);
-    if (!fs.statSync(localPath).isFile()) continue;
-    const buffer = fs.readFileSync(localPath);
-    const contentType =
-      path.extname(file).toLowerCase() === ".svg"
-        ? "image/svg+xml"
-        : path.extname(file).toLowerCase() === ".png"
-        ? "image/png"
-        : "image/jpeg";
-    const url = await saveImage(file, buffer, contentType);
-    mapping.set(`/uploads/${file}`, url);
-    uploaded++;
+  for (const { localDir, urlPrefix } of dirs) {
+    if (!fs.existsSync(localDir)) continue;
+    for (const file of fs.readdirSync(localDir)) {
+      const localPath = path.join(localDir, file);
+      if (!fs.statSync(localPath).isFile()) continue;
+      const buffer = fs.readFileSync(localPath);
+      const ext = path.extname(file).toLowerCase();
+      const contentType =
+        ext === ".svg" ? "image/svg+xml" : ext === ".png" ? "image/png" : "image/jpeg";
+      const url = await saveImage(file, buffer, contentType);
+      mapping.set(`${urlPrefix}${file}`, url);
+      uploaded++;
+    }
   }
 
   console.log(`Uploaded ${uploaded} files to Supabase Storage.`);
