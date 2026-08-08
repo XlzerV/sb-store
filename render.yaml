@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: sb-store
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install && npm run build
+    startCommand: npx prisma db push --skip-generate && npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: products
+      - key: JWT_SECRET
+        sync: false
+      - key: ECMODZ_API_KEY
+        sync: false
+      - key: ECMODZ_TOKEN
+        sync: false

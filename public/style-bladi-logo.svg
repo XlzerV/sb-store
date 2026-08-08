@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300">
+  <rect width="800" height="300" fill="#000000"/>
+  <defs>
+    <filter id="rough">
+      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <!-- S -->
+  <path d="M 120 140 Q 140 95 170 100 Q 200 105 185 130 Q 170 150 135 145 Q 110 142 115 160 Q 120 180 150 185 Q 180 190 190 170" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- t -->
+  <path d="M 210 115 L 230 115 M 220 115 L 220 185 M 218 145 Q 230 140 240 145" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- y -->
+  <path d="M 255 130 Q 270 110 290 130 L 290 185 Q 295 210 310 210 Q 325 210 330 190" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- l -->
+  <path d="M 340 95 L 340 185" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" filter="url(#rough)"/>
+  <!-- e -->
+  <path d="M 355 145 Q 370 125 395 145 Q 410 165 390 175 Q 370 185 355 170" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+
+  <!-- B -->
+  <path d="M 430 140 Q 440 100 470 105 Q 500 110 485 140 Q 470 160 440 155 M 440 155 Q 455 160 480 170 Q 505 180 500 200 Q 495 220 460 220 Q 435 220 430 200" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- l -->
+  <path d="M 520 95 L 520 185" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" filter="url(#rough)"/>
+  <!-- a -->
+  <path d="M 535 165 Q 535 125 560 125 Q 585 125 585 165 L 585 185 Q 565 200 550 185" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- d -->
+  <path d="M 605 130 Q 620 110 635 130 L 635 185 Q 620 200 600 185 Q 590 170 595 150 M 620 145 L 635 145" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- i -->
+  <path d="M 650 125 L 650 185 M 650 105 L 650 108" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" filter="url(#rough)"/>
+
+  <!-- Dynamic underline swoosh -->
+  <path d="M 100 215 Q 200 195 300 210 Q 400 225 500 205 Q 600 185 700 215 Q 730 225 740 210" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#rough)"/>
+  <!-- Accent swoosh -->
+  <path d="M 680 215 Q 710 225 730 205" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <!-- Splatter dots -->
+  <circle cx="740" cy="200" r="3" fill="white" filter="url(#rough)"/>
+  <circle cx="750" cy="215" r="2" fill="white" filter="url(#rough)"/>
+  <circle cx="745" cy="225" r="2.5" fill="white" filter="url(#rough)"/>
+  <circle cx="100" cy="225" r="2" fill="white" filter="url(#rough)"/>
+  <circle cx="95" cy="215" r="1.5" fill="white" filter="url(#rough)"/>
+</svg>
