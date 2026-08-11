@@ -9,7 +9,7 @@ export interface CartItem {
   slug: string;
 }
 
-const CART_KEY = "vanguard_cart";
+const CART_KEY = "sb_cart";
 
 export function getCart(): CartItem[] {
   try {

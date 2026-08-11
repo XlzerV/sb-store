@@ -32,7 +32,7 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-black">
       <form onSubmit={handleSubmit} className="w-full max-w-sm px-6 space-y-6">
         <div className="text-center">
-          <h1 className="font-podium text-3xl text-white uppercase tracking-wider">VANGUARD</h1>
+          <h1 className="font-podium text-3xl text-white uppercase tracking-wider">SB</h1>
           <p className="text-sm text-white/40 mt-2">Admin Access</p>
         </div>
         <input className="input-field bg-white/5 border-white/10 text-white placeholder-white/30" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />

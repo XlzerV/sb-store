@@ -25,7 +25,7 @@ export default function Home() {
                 <Crown size={14} /> Premium Streetwear
               </div>
               <h1 className="font-podium text-display-xl text-white leading-[1.05] tracking-tight">
-                ELEVATE<br />YOUR<br />STYLE
+                STYLE<br />BLADI
               </h1>
               <p className="text-white/40 text-body-lg max-w-md leading-relaxed">
                 Premium t-shirts and streetwear crafted for those who refuse to blend in. Bold designs, uncompromising quality.
@@ -44,7 +44,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-transparent rounded-2xl rotate-6" />
                 <div className="absolute inset-0 border border-white/10 rounded-2xl -rotate-3" />
                 <div className="absolute inset-0 bg-bg-elevated rounded-2xl flex items-center justify-center overflow-hidden">
-                  <span className="font-podium text-5xl text-white/5">V</span>
+                  <span className="font-podium text-5xl text-white/5">SB</span>
                 </div>
               </div>
             </div>

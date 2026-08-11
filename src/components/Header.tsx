@@ -35,11 +35,13 @@ export default function Header() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/10" : "bg-transparent"}`}>
         <div className="flex items-center justify-between px-6 py-5 sm:px-10 lg:px-16 lg:py-6">
           <Link to="/" className="flex items-center gap-3">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-secondary">
-              <path d="M4 28L16 4L28 28" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M10 20L16 12L22 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span className="font-podium text-xl sm:text-2xl font-bold uppercase tracking-wider text-white">VANGUARD</span>
+            <div className="w-9 h-9 flex items-center justify-center border border-secondary/50 bg-secondary/10">
+              <span className="font-podium text-xs text-secondary tracking-tight">SB</span>
+            </div>
+            <div className="relative h-7 overflow-hidden">
+              <span className={`absolute top-0 left-0 font-podium text-xl sm:text-2xl font-bold uppercase tracking-wider text-white transition-all duration-500 ${scrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}>SB</span>
+              <span className={`absolute top-0 left-0 font-podium text-xl sm:text-2xl font-bold uppercase tracking-wider text-white transition-all duration-500 ${scrolled ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}>Style Bladi</span>
+            </div>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -75,7 +77,7 @@ export default function Header() {
       {mobileMenu && (
         <div className="fixed inset-0 z-40 flex flex-col bg-black/95 backdrop-blur-sm px-6 py-5 animate-fade-in">
           <div className="flex items-center justify-between py-5">
-            <Link to="/" className="font-podium text-2xl font-bold uppercase tracking-wider text-white">VANGUARD</Link>
+            <Link to="/" className="font-podium text-2xl font-bold uppercase tracking-wider text-white">Style Bladi</Link>
             <button onClick={() => setMobileMenu(false)}><X className="h-6 w-6 text-white" /></button>
           </div>
           <div className="flex flex-1 flex-col items-center justify-center gap-8">

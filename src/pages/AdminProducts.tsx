@@ -87,7 +87,7 @@ export default function AdminProducts() {
   return (
     <div className="min-h-screen bg-black text-white">
       <aside className="fixed top-0 left-0 h-full w-56 bg-[#0a0a0a] border-r border-white/10 p-6 hidden md:flex flex-col">
-        <h2 className="font-podium text-lg text-white uppercase tracking-wider mb-8">VANGUARD</h2>
+        <h2 className="font-podium text-lg text-white uppercase tracking-wider mb-8">SB</h2>
         <nav className="flex flex-col gap-1">
           <Link to="/admin" className="px-4 py-2 text-sm text-white/50 hover:text-white hover:bg-white/5 rounded-lg">Dashboard</Link>
           <Link to="/admin/products" className="px-4 py-2 text-sm text-white bg-white/5 rounded-lg">Products</Link>
@@ -96,7 +96,7 @@ export default function AdminProducts() {
       </aside>
       <div className="md:ml-56">
         <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0a0a0a] md:hidden">
-          <Link to="/admin" className="font-podium text-sm uppercase text-white">VANGUARD</Link>
+          <Link to="/admin" className="font-podium text-sm uppercase text-white">SB</Link>
           <div className="flex items-center gap-3">
             <Link to="/admin/products" className="px-3 py-1 text-xs text-white/60 border border-white/10 rounded-full">Products</Link>
             <button onClick={handleLogout} className="text-xs text-white/30 hover:text-white"><LogOut size={14} /></button>
