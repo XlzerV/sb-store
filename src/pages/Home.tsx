@@ -44,7 +44,8 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-transparent rounded-2xl rotate-6" />
                 <div className="absolute inset-0 border border-white/10 rounded-2xl -rotate-3" />
                 <div className="absolute inset-0 bg-bg-elevated rounded-2xl flex items-center justify-center overflow-hidden">
-                  <img src="/sb-logo.jpg" alt="SB Style Bladi" className="w-40 h-40 rounded-md object-cover opacity-20" />
+                  <img src="/hero-photo.jpg" alt="SB Style Bladi" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
               </div>
             </div>
