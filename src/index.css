@@ -6,43 +6,45 @@
 @tailwind utilities;
 
 :root {
-  --primary: #0f172a;
-  --primary-hover: #1e293b;
-  --primary-foreground: #f8fafc;
-  --secondary: #e94560;
-  --secondary-hover: #d63a55;
-  --accent: #16213e;
-  --gold: #f5a623;
+  --primary: #1b1b1d;
+  --primary-hover: #2e2e2e;
+  --primary-foreground: #f5f5f5;
+  --secondary: #c6a75e;
+  --secondary-hover: #b5964e;
+  --accent: #2e2e2e;
+  --gold: #c6a75e;
   --success: #16a34a;
   --warning: #f59e0b;
   --error: #dc2626;
   --info: #2563eb;
-  --bg: #fafafa;
+  --bg: #f5f5f5;
   --bg-elevated: #ffffff;
-  --bg-muted: #f4f4f5;
-  --fg: #0f172a;
-  --text: #0f172a;
-  --fg-muted: #71717a;
-  --text-muted: #71717a;
-  --fg-subtle: #a1a1aa;
-  --text-subtle: #a1a1aa;
-  --border: #e4e4e7;
-  --border-muted: #f4f4f5;
+  --bg-muted: #ededed;
+  --fg: #2e2e2e;
+  --text: #2e2e2e;
+  --fg-muted: #878c96;
+  --text-muted: #878c96;
+  --fg-subtle: #a8acb2;
+  --text-subtle: #a8acb2;
+  --border: #e1e3e6;
+  --border-muted: #eeeff0;
+  --border-strong: #c4c7cc;
   --radius: 0.5rem;
 }
 
 .dark {
-  --bg: #080b12;
-  --bg-elevated: #0f1320;
-  --bg-muted: #1a1f2e;
-  --fg: #f1f5f9;
-  --text: #f1f5f9;
-  --fg-muted: #94a3b8;
-  --text-muted: #94a3b8;
-  --fg-subtle: #64748b;
-  --text-subtle: #64748b;
-  --border: #1e293b;
-  --border-muted: #1a1f2e;
+  --bg: #121214;
+  --bg-elevated: #1b1b1d;
+  --bg-muted: #232326;
+  --fg: #f5f5f5;
+  --text: #f5f5f5;
+  --fg-muted: #878c96;
+  --text-muted: #878c96;
+  --fg-subtle: #5c6067;
+  --text-subtle: #5c6067;
+  --border: #2a2a2d;
+  --border-muted: #232326;
+  --border-strong: #3a3a3e;
 }
 
 * {
@@ -66,7 +68,7 @@
     @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-secondary text-white font-semibold rounded-xl transition-all duration-200 hover:bg-secondary-hover active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-secondary text-primary font-semibold rounded-xl transition-all duration-200 hover:bg-secondary-hover active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-outline {
     @apply inline-flex items-center justify-center px-6 py-3 border border-border text-text font-semibold rounded-xl transition-all duration-200 hover:bg-bg-muted active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
@@ -101,6 +103,6 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(233, 69, 96, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(233, 69, 96, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(198, 167, 94, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(198, 167, 94, 0.6); }
 }

@@ -97,7 +97,7 @@ export default function AdminProductForm() {
   return (
     <div className="min-h-screen bg-black text-white">
       <aside className="fixed top-0 left-0 h-full w-56 bg-[#0a0a0a] border-r border-white/10 p-6 hidden md:flex flex-col">
-        <h2 className="font-podium text-lg text-white uppercase tracking-wider mb-8">SB</h2>
+        <h2 className="flex items-center gap-2 font-podium text-lg text-white uppercase tracking-wider mb-8"><img src="/sb-logo.jpg" alt="SB" className="h-7 w-7 rounded object-cover" /> SB</h2>
         <nav className="flex flex-col gap-1">
           <button onClick={() => navigate("/admin")} className="px-4 py-2 text-sm text-white/50 hover:text-white hover:bg-white/5 rounded-lg text-left">Dashboard</button>
           <button onClick={() => navigate("/admin/products")} className="px-4 py-2 text-sm text-white bg-white/5 rounded-lg text-left">Products</button>

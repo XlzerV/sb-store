@@ -44,7 +44,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-transparent rounded-2xl rotate-6" />
                 <div className="absolute inset-0 border border-white/10 rounded-2xl -rotate-3" />
                 <div className="absolute inset-0 bg-bg-elevated rounded-2xl flex items-center justify-center overflow-hidden">
-                  <span className="font-podium text-5xl text-white/5">SB</span>
+                  <img src="/sb-logo.jpg" alt="SB Style Bladi" className="w-40 h-40 rounded-md object-cover opacity-20" />
                 </div>
               </div>
             </div>
