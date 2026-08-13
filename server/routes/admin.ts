@@ -51,12 +51,22 @@ router.get("/products/:id", requireAdmin, async (req, res) => {
 router.post("/products", requireAdmin, async (req, res) => {
   try {
     const { name, slug, description, price, salePrice, categoryId, sizes, images, inStock, featured } = req.body;
+    if (typeof name !== "string" || !name.trim() || typeof slug !== "string" || !slug.trim()) {
+      return res.status(400).json({ error: "Name and slug are required" });
+    }
+    const parsedPrice = parseFloat(price);
+    if (!Number.isFinite(parsedPrice) || parsedPrice < 0) {
+      return res.status(400).json({ error: "Invalid price" });
+    }
+    if (salePrice !== undefined && salePrice !== null && (!Number.isFinite(parseFloat(salePrice)) || parseFloat(salePrice) < 0)) {
+      return res.status(400).json({ error: "Invalid sale price" });
+    }
     const product = await prisma.product.create({
       data: {
         name,
         slug,
         description,
-        price: parseFloat(price),
+        price: parsedPrice,
         salePrice: salePrice ? parseFloat(salePrice) : null,
         categoryId,
         inStock: inStock ?? true,
@@ -75,6 +85,15 @@ router.post("/products", requireAdmin, async (req, res) => {
 router.put("/products/:id", requireAdmin, async (req, res) => {
   try {
     const { name, slug, description, price, salePrice, categoryId, sizes, images, inStock, featured } = req.body;
+    if (price !== undefined && (!Number.isFinite(parseFloat(price)) || parseFloat(price) < 0)) {
+      return res.status(400).json({ error: "Invalid price" });
+    }
+    if (name !== undefined && (typeof name !== "string" || !name.trim())) {
+      return res.status(400).json({ error: "Invalid name" });
+    }
+    if (slug !== undefined && (typeof slug !== "string" || !slug.trim())) {
+      return res.status(400).json({ error: "Invalid slug" });
+    }
     await prisma.productSize.deleteMany({ where: { productId: req.params.id } });
     await prisma.productImage.deleteMany({ where: { productId: req.params.id } });
     const data: any = { name, slug, description, price: parseFloat(price) };
@@ -133,6 +152,10 @@ router.get("/orders", requireAdmin, async (req, res) => {
 router.put("/orders/:id/status", requireAdmin, async (req, res) => {
   try {
     const { status } = req.body;
+    const VALID = ["PENDING", "CONFIRMED", "SHIPPED", "DELIVERED", "CANCELLED"];
+    if (typeof status !== "string" || !VALID.includes(status)) {
+      return res.status(400).json({ error: "Invalid status" });
+    }
     const order = await prisma.order.update({
       where: { id: req.params.id },
       data: { status },
