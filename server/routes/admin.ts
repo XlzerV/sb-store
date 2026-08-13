@@ -24,7 +24,7 @@ router.get("/dashboard", requireAdmin, async (_req, res) => {
       prisma.order.count(),
       prisma.order.count({ where: { status: "PENDING" } }),
       prisma.product.count(),
-      prisma.order.aggregate({ _sum: { grandTotal: true } }),
+      prisma.order.aggregate({ _sum: { grandTotal: true }, where: { status: { not: "CANCELLED" } } }),
     ]);
     const recentOrders = await prisma.order.findMany({
       take: 5,
