@@ -51,7 +51,7 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-black text-white">
       <aside className="fixed top-0 left-0 h-full w-56 bg-[#0a0a0a] border-r border-white/10 p-6 hidden md:flex flex-col">
-        <h2 className="flex items-center gap-2 font-podium text-lg text-white uppercase tracking-wider mb-8"><img src="/sb-logo.jpg" alt="SB" className="h-7 w-7 rounded object-cover" /> SB</h2>
+        <h2 className="flex items-center gap-2 font-podium text-lg text-white uppercase tracking-wider mb-8"><img src="/sb-logo.png" alt="SB" className="h-6 w-auto object-contain" /> SB</h2>
         <nav className="flex flex-col gap-1">
           {adminNav.map((item) => (
             <Link key={item.href} to={item.href} className={`px-4 py-2 text-sm rounded-lg transition-colors ${item.href === "/admin" ? "text-white bg-white/5" : "text-white/50 hover:text-white hover:bg-white/5"}`}>
@@ -67,7 +67,7 @@ export default function AdminDashboard() {
       <div className="md:ml-56">
         <header className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0a0a0a]">
           <div className="flex md:hidden items-center gap-2">
-            <Link to="/admin" className="flex items-center gap-2 font-podium text-sm uppercase text-white"><img src="/sb-logo.jpg" alt="SB" className="h-6 w-6 rounded object-cover" /> SB</Link>
+            <Link to="/admin" className="flex items-center gap-2 font-podium text-sm uppercase text-white"><img src="/sb-logo.png" alt="SB" className="h-5 w-auto object-contain" /> SB</Link>
           </div>
           <div className="flex items-center gap-2 md:hidden">
             {adminNav.map((item) => (
