@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="md:col-span-2">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/sb-logo.png" alt="SB Style Bladi" className="h-9 w-auto object-contain" />
+            <img src="/sb-logo.jpg" alt="SB Style Bladi" className="h-9 w-9 rounded-md object-cover ring-1 ring-white/10" />
             <span className="font-podium text-2xl font-bold uppercase tracking-wider text-white">Style Bladi</span>
           </Link>
           <p className="mt-4 text-sm text-white/40 max-w-md leading-relaxed">

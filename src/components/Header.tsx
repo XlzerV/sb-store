@@ -35,7 +35,7 @@ export default function Header() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/10" : "bg-transparent"}`}>
         <div className="flex items-center justify-between px-6 py-5 sm:px-10 lg:px-16 lg:py-6">
           <Link to="/" className="flex items-center gap-3">
-            <img src="/sb-logo.png" alt="SB Style Bladi" className="h-10 w-auto object-contain" />
+            <img src="/sb-logo.jpg" alt="SB Style Bladi" className="h-10 w-10 rounded-md object-cover ring-1 ring-white/10" />
             <div className="relative h-7 overflow-hidden">
               <span className={`absolute top-0 left-0 font-podium text-xl sm:text-2xl font-bold uppercase tracking-wider text-white transition-all duration-500 ${scrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}>SB</span>
               <span className={`absolute top-0 left-0 font-podium text-xl sm:text-2xl font-bold uppercase tracking-wider text-white transition-all duration-500 ${scrolled ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}>Style Bladi</span>
