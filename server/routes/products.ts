@@ -3,6 +3,15 @@ import { prisma } from "../index";
 
 const router = Router();
 
+function dedupeSizes(sizes: { size: string }[]) {
+  const seen = new Set<string>();
+  return sizes.filter((s) => {
+    if (seen.has(s.size)) return false;
+    seen.add(s.size);
+    return true;
+  });
+}
+
 router.get("/", async (req, res) => {
   try {
     const { category, search, page = "1", limit = "12" } = req.query;
@@ -20,7 +29,12 @@ router.get("/", async (req, res) => {
       }),
       prisma.product.count({ where }),
     ]);
-    res.json({ products, total, page: parseInt(page as string), totalPages: Math.ceil(total / parseInt(limit as string)) });
+    res.json({
+      products: products.map((p) => ({ ...p, sizes: dedupeSizes(p.sizes) })),
+      total,
+      page: parseInt(page as string),
+      totalPages: Math.ceil(total / parseInt(limit as string)),
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch products" });
   }
@@ -38,7 +52,10 @@ router.get("/:slug", async (req, res) => {
       include: { images: true, sizes: true },
       take: 4,
     });
-    res.json({ product, related });
+    res.json({
+      product: { ...product, sizes: dedupeSizes(product.sizes) },
+      related: related.map((p) => ({ ...p, sizes: dedupeSizes(p.sizes) })),
+    });
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch product" });
   }

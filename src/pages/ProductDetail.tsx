@@ -42,6 +42,7 @@ export default function ProductDetail() {
 
   const image = [...(product.images || [])].sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))[0]?.url || "/placeholder.svg";
   const hasSale = product.salePrice != null && product.salePrice < product.price;
+  const sizes = Array.from(new Map((product.sizes || []).map((s: any) => [s.size, s])).values());
 
   return (
     <div className="min-h-screen pt-28 pb-20 px-6 sm:px-10 lg:px-16 bg-bg">
@@ -63,11 +64,11 @@ export default function ProductDetail() {
             </div>
             {product.description && <p className="text-text-muted leading-relaxed">{product.description}</p>}
 
-            {product.sizes?.length > 0 && (
+            {sizes.length > 0 && (
               <div className="space-y-3">
                 <p className="text-sm text-text-muted">Size</p>
                 <div className="flex flex-wrap gap-2">
-                  {product.sizes.map((s: any) => (
+                  {sizes.map((s: any) => (
                     <button key={s.size} onClick={() => setSelectedSize(s.size)} className={`px-5 py-2.5 text-sm border rounded-lg transition-all ${selectedSize === s.size ? "border-secondary bg-secondary/10 text-white" : "border-border text-text-muted hover:text-text"}`}>
                       {s.size}
                     </button>

@@ -12,6 +12,7 @@
     "init": "tsx scripts/init.ts",
     "export-data": "tsx scripts/export-data.ts",
     "migrate-uploads": "tsx scripts/migrate-uploads.ts",
+    "dedupe-sizes": "tsx scripts/dedupe-sizes.ts",
     "build": "vite build",
     "seed": "npx prisma db seed",
     "db:push": "npx prisma db push",

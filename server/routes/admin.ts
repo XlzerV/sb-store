@@ -4,6 +4,20 @@ import { requireAdmin } from "../middleware/auth";
 
 const router = Router();
 
+function cleanSizes(sizes: unknown): string[] {
+  if (!Array.isArray(sizes)) return [];
+  return Array.from(new Set(sizes.filter((s): s is string => typeof s === "string" && !!s.trim())));
+}
+
+function dedupeSizes(sizes: { size: string }[]) {
+  const seen = new Set<string>();
+  return sizes.filter((s) => {
+    if (seen.has(s.size)) return false;
+    seen.add(s.size);
+    return true;
+  });
+}
+
 router.get("/dashboard", requireAdmin, async (_req, res) => {
   try {
     const [totalOrders, pendingOrders, totalProducts, totalSales] = await Promise.all([
@@ -29,7 +43,7 @@ router.get("/products", requireAdmin, async (_req, res) => {
       include: { category: true, images: true, sizes: true, _count: { select: { orderItems: true } } },
       orderBy: { createdAt: "desc" },
     });
-    res.json(products);
+    res.json(products.map((p) => ({ ...p, sizes: dedupeSizes(p.sizes) })));
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch products" });
   }
@@ -42,7 +56,7 @@ router.get("/products/:id", requireAdmin, async (req, res) => {
       include: { category: true, images: true, sizes: true },
     });
     if (!product) return res.status(404).json({ error: "Product not found" });
-    res.json(product);
+    res.json({ ...product, sizes: dedupeSizes(product.sizes) });
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch product" });
   }
@@ -71,12 +85,12 @@ router.post("/products", requireAdmin, async (req, res) => {
         categoryId,
         inStock: inStock ?? true,
         featured: featured ?? false,
-        sizes: { create: (sizes || []).map((s: string) => ({ size: s })) },
+        sizes: { create: cleanSizes(sizes).map((s) => ({ size: s })) },
         images: { create: (images || []).map((url: string, i: number) => ({ url, order: i })) },
       },
       include: { category: true, images: true, sizes: true },
     });
-    res.json(product);
+    res.json({ ...product, sizes: dedupeSizes(product.sizes) });
   } catch (err) {
     res.status(500).json({ error: "Failed to create product" });
   }
@@ -101,14 +115,14 @@ router.put("/products/:id", requireAdmin, async (req, res) => {
     if (categoryId) data.categoryId = categoryId;
     if (inStock !== undefined) data.inStock = inStock;
     if (featured !== undefined) data.featured = featured;
-    data.sizes = { create: (sizes || []).map((s: string) => ({ size: s })) };
+    data.sizes = { create: cleanSizes(sizes).map((s) => ({ size: s })) };
     data.images = { create: (images || []).map((url: string, i: number) => ({ url, order: i })) };
     const product = await prisma.product.update({
       where: { id: req.params.id },
       data,
       include: { category: true, images: true, sizes: true },
     });
-    res.json(product);
+    res.json({ ...product, sizes: dedupeSizes(product.sizes) });
   } catch (err: any) {
     console.error("Update product error:", err?.message || err);
     res.status(500).json({ error: err?.message || "Failed to update product" });
